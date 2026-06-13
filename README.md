@@ -85,7 +85,7 @@ This project is built in 10 phases (see the [spec](RetailRec_MLOps_Project_Spec.
 
 | Phase | Scope | Status |
 |-------|-------|--------|
-| 0 | Repo scaffold, Python 3.11 env, local infra (compose) | 🟡 In progress |
+| 0 | Repo scaffold, Python 3.11 env, local infra (compose) | ✅ Done |
 | 1 | Data ingestion + Great Expectations + PySpark features | ⬜ Planned |
 | 2 | Feast feature store (offline Parquet + online Redis) | ⬜ Planned |
 | 3 | ALS + content-based baselines (MLflow) | ⬜ Planned |
@@ -99,10 +99,30 @@ This project is built in 10 phases (see the [spec](RetailRec_MLOps_Project_Spec.
 
 ---
 
+## Demo Dashboard — "Atelier Control Plane"
+
+A React + Vite + TypeScript dashboard (`frontend/`) that visualizes the whole system in one screen:
+the **Pipeline Runway** (pick a shopper → two-tower/FAISS retrieval → XGBoost rerank → recommended
+lookbook) plus live panels for the MLflow registry, Evidently drift, the A/B experiment (lift /
+p-value / rollback), and serving latency. Editorial fashion-meets-telemetry design — Bodoni Moda,
+Archivo, IBM Plex Mono on oat paper with an ultramarine signal.
+
+```powershell
+cd frontend
+npm install
+npm run dev        # http://localhost:5173
+```
+
+The typed API client hits the FastAPI backend at `/api/*` and falls back to bundled demo data when
+it's offline, so the dashboard is always viewable and goes live automatically as Phases 6/8/9 land.
+
+---
+
 ## Repository Layout
 
 ```
 src/retailrec/        # core package (config, data, features, models, serving, ...)
+frontend/             # React/Vite "Atelier Control Plane" demo dashboard
 feature_repo/         # Feast feature definitions
 airflow/dags/         # retraining + materialization DAGs
 k8s/                  # Kubernetes manifests (Deployment, Service, HPA, Ingress)

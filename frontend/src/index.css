@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+    /* Faint editorial grid texture on the paper */
+    background-image:
+      linear-gradient(to right, rgba(23, 23, 28, 0.022) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(23, 23, 28, 0.022) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  ::selection {
+    background: #2a27d6;
+    color: #f4f2ec;
+  }
+}
+
+@layer components {
+  /* Mono uppercase labels used for eyebrows, units, IDs */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-eyebrow text-ink-faint;
+  }
+
+  .panel {
+    @apply rounded-[3px] border border-line bg-surface shadow-panel;
+  }
+
+  /* Hairline rule with an editorial tick at the start */
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+
+  /* Big didone metric numeral */
+  .metric {
+    @apply font-display tabular-nums leading-none;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .tag-dot {
+    @apply inline-block h-2 w-2 rounded-full;
+  }
+
+  .focus-ring {
+    @apply outline-none ring-2 ring-signal ring-offset-2 ring-offset-paper;
+  }
+}
+
+/* Respect reduced-motion: disable the orchestrated reveals */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
