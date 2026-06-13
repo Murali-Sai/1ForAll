@@ -1,0 +1,15 @@
+# Normalize line endings: store text as LF in the repo.
+* text=auto eol=lf
+
+# Scripts that must stay LF even when checked out on Windows
+*.sh   text eol=lf
+*.ps1  text eol=crlf
+
+# Binary / non-diffable
+*.docx binary
+*.parquet binary
+*.onnx binary
+*.pt binary
+*.pkl binary
+*.png binary
+*.jpg binary

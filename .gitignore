@@ -1,0 +1,77 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.python-version-local
+
+# ---- Environments / secrets ----
+.env
+.env.local
+*.pem
+kaggle.json
+.aws/
+secrets/
+
+# ---- Data & artifacts (large, regenerated) ----
+data/raw/*
+data/interim/*
+data/processed/*
+artifacts/*
+*.parquet
+*.csv
+!data/**/.gitkeep
+!tests/**/*.csv
+
+# ---- ML / experiment tracking ----
+mlruns/
+mlartifacts/
+*.onnx
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.faiss
+*.index
+.mlflow/
+
+# ---- Feast ----
+feature_repo/data/
+feature_repo/.ipynb_checkpoints/
+*.db
+
+# ---- Spark ----
+spark-warehouse/
+metastore_db/
+derby.log
+
+# ---- Terraform ----
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- Test / coverage ----
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+.ruff_cache/
+.mypy_cache/
+
+# ---- Docker / logs ----
+*.log
+logs/
